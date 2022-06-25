@@ -18,7 +18,7 @@
             </div>
             <div class="flex justify-center flex-col md:flex-row items-center ">
                 <button class="bg-[#D1BEB0] font-bold rounded py-4 px-8 shadow-lg uppercase tracking-wider w-[208px] h-[200px] mx-2 my-2 md:my-0 hover:bg-slate-200">
-                    Pre Order 1
+                    Pre Ubah 1
                 </button>
 
                 <button class="bg-[#D1BEB0] font-bold rounded py-4 px-8 shadow-lg uppercase tracking-wider w-[208px] h-[200px] mx-2 my-2 md:my-0 hover:bg-slate-200">
