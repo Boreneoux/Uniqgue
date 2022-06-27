@@ -21,3 +21,8 @@ body {
 .hamburger-active > span:nth-child(3) {
   @apply -rotate-45;
 }
+
+#about-us {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}

@@ -26,4 +26,5 @@
         © Copyright All Rights Reserved
     </p>
 </footer>
+
 <!-- Footer end -->
