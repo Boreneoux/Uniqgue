@@ -28,9 +28,9 @@ body {
 }
 
 .left-full {
-  left: -100% !important;
+  left: -100%;
 }
 
 .left-0 {
-  left: 0 !important;
+  left: 0;
 }

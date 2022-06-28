@@ -8,7 +8,7 @@
             <span class="hamburger-line transition duration-300 ease-in-out origin-bottom-left "></span>
         </button>
         <a href="<?= base_url('/'); ?>" class="font-normal text-2xl text-dark left-4 md:ml-6">UNIQGUE</a>
-        <nav id="nav-menu" class="fixed top-20 bottom-0 !-left-full w-3/5 transition-all duration-300 bg-[#3C4F77] md:bg-transparent md:static md:flex md:justify-center md:mx-auto">
+        <nav id="nav-menu" class="fixed top-20 bottom-0 -left-full w-3/5 transition-all duration-300 bg-[#3C4F77] md:bg-transparent md:static md:flex md:justify-center md:mx-auto">
             <ul class="block md:flex md:justify-center md:place-items-center">
                 <li class="group"><a href="<?= base_url('/'); ?>" class="py-5 md:py-0 pl-4 text-xl md:text-lg text-white md:text-black mx-4 group-hover:text-sky-700 flex font-normal font-lg ">HOME</a></li>
                 <li class="group"><a href="<?= base_url('/catalogue'); ?>" class="py-5 md:py-0 pl-4 text-xl md:text-lg text-white md:text-black mx-4 group-hover:text-sky-700 flex font-normal font-lg">CATALOGUE</a></li>
