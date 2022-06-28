@@ -26,3 +26,11 @@ body {
   font-size: 1.25rem;
   line-height: 1.75rem;
 }
+
+.left-full {
+  left: -100%;
+}
+
+.left-0 {
+  left: 0;
+}
