@@ -636,6 +636,34 @@ video {
   left: -100% !important;
 }
 
+.top-0 {
+  top: 0px !important;
+}
+
+.left-2 {
+  left: 0.5rem !important;
+}
+
+.left-4 {
+  left: 1rem !important;
+}
+
+.left-0 {
+  left: 0px !important;
+}
+
+.top-20 {
+  top: 5rem !important;
+}
+
+.bottom-0 {
+  bottom: 0px !important;
+}
+
+.-left-full {
+  left: -100% !important;
+}
+
 .mx-2 {
   margin-left: 0.5rem !important;
   margin-right: 0.5rem !important;
@@ -669,6 +697,16 @@ video {
 .mx-0 {
   margin-left: 0px !important;
   margin-right: 0px !important;
+}
+
+.mx-auto {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.mx-4 {
+  margin-left: 1rem !important;
+  margin-right: 1rem !important;
 }
 
 .mb-4 {
@@ -743,8 +781,24 @@ video {
   width: 208px !important;
 }
 
+.w-full {
+  width: 100% !important;
+}
+
+.w-3\/5 {
+  width: 60% !important;
+}
+
 .max-w-sm {
   max-width: 24rem !important;
+}
+
+.origin-top-left {
+  transform-origin: top left !important;
+}
+
+.origin-bottom-left {
+  transform-origin: bottom left !important;
 }
 
 .origin-top-left {
@@ -856,6 +910,20 @@ video {
   background-color: rgb(209 190 176 / var(--tw-bg-opacity)) !important;
 }
 
+.bg-transparent {
+  background-color: transparent !important;
+}
+
+.bg-white {
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity)) !important;
+}
+
+.bg-\[\#3C4F77\] {
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(60 79 119 / var(--tw-bg-opacity)) !important;
+}
+
 .p-5 {
   padding: 1.25rem !important;
 }
@@ -920,6 +988,21 @@ video {
   padding-right: 2rem !important;
 }
 
+.py-8 {
+  padding-top: 2rem !important;
+  padding-bottom: 2rem !important;
+}
+
+.py-6 {
+  padding-top: 1.5rem !important;
+  padding-bottom: 1.5rem !important;
+}
+
+.py-5 {
+  padding-top: 1.25rem !important;
+  padding-bottom: 1.25rem !important;
+}
+
 .pl-4 {
   padding-left: 1rem !important;
 }
@@ -961,6 +1044,16 @@ video {
   line-height: 1.5rem !important;
 }
 
+.text-2xl {
+  font-size: 1.5rem !important;
+  line-height: 2rem !important;
+}
+
+.text-xl {
+  font-size: 1.25rem !important;
+  line-height: 1.75rem !important;
+}
+
 .font-normal {
   font-weight: 400 !important;
 }
@@ -975,6 +1068,10 @@ video {
 
 .font-light {
   font-weight: 300 !important;
+}
+
+.font-normal {
+  font-weight: 400 !important;
 }
 
 .uppercase {
@@ -1002,6 +1099,16 @@ video {
 .text-gray-900 {
   --tw-text-opacity: 1 !important;
   color: rgb(17 24 39 / var(--tw-text-opacity)) !important;
+}
+
+.text-black {
+  --tw-text-opacity: 1 !important;
+  color: rgb(0 0 0 / var(--tw-text-opacity)) !important;
+}
+
+.text-white {
+  --tw-text-opacity: 1 !important;
+  color: rgb(255 255 255 / var(--tw-text-opacity)) !important;
 }
 
 .antialiased {
@@ -1043,6 +1150,20 @@ video {
 
 .filter {
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow) !important;
+}
+
+.transition {
+  transition-property: color, background-color, border-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-text-decoration-color, -webkit-backdrop-filter !important;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter !important;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-text-decoration-color, -webkit-backdrop-filter !important;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
+  transition-duration: 150ms !important;
+}
+
+.transition-all {
+  transition-property: all !important;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
+  transition-duration: 150ms !important;
 }
 
 .transition {
@@ -1190,6 +1311,11 @@ body {
     margin-bottom: 0px !important;
   }
 
+  .md\:mx-auto {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
   .md\:ml-6 {
     margin-left: 1.5rem !important;
   }
@@ -1200,6 +1326,14 @@ body {
 
   .md\:mb-4 {
     margin-bottom: 1rem !important;
+  }
+
+  .md\:ml-6 {
+    margin-left: 1.5rem !important;
+  }
+
+  .md\:mr-6 {
+    margin-right: 1.5rem !important;
   }
 
   .md\:flex {
@@ -1253,6 +1387,16 @@ body {
   .md\:px-\[13rem\] {
     padding-left: 13rem !important;
     padding-right: 13rem !important;
+  }
+
+  .md\:py-0 {
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+  }
+
+  .md\:px-2 {
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
   }
 
   .md\:pl-4 {
