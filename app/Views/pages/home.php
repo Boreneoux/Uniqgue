@@ -8,7 +8,7 @@
 
     <div class="py-20 bg-[#f3f3f3] w-full flex flex-col text-start justify-center md:flex-row">
         <div class="container mx-auto px-6 md:flex-row">
-            <div class="relative lg:mx-48 md:mx-0">
+            <div class="flex flex-col">
                 <h2 class="text-4xl font-bold mb-2 text-black ">
                     Trending Item
                 </h2>
@@ -98,22 +98,22 @@
 <!-- END OF Trending Item -->
 
 <!-- Values -->
-<section id="keunggulan">
+<!-- <section id="keunggulan">
     <div class="py-20 flex justify-around">
         <div class="justify-around flex flex-col md:flex-row items-center">
-            <div class="container mx-0 md:mx-32">
+            <div class="container mx-0">
                 <img src="/img/Principles/fast-delivery.png" alt="Fast Delivery">
                 <h2 class="text-black font-bold text-2xl mb-2 text-center">FAST DELIVERY</h2>
                 <p class="text-black text-sm text-center">Using the fastest delivery service in town.</p>
             </div>
 
-            <div class="container mx-0 md:mx-32">
+            <div class="container mx-0 md:px-28">
                 <img src="/img/Principles/best-quality.png" alt="Best Quality">
                 <h2 class="text-black font-bold text-2xl mb-2 text-center">BEST QUALITY</h2>
                 <p class="text-black text-sm text-center">Our products use the best materials.</p>
             </div>
 
-            <div class="container mx-0 md:mx-32">
+            <div class="container mx-0">
                 <img src="/img/Principles/flexible-payment.png" alt="Flexible Payment" class="mb-0 md:mb-4 ">
                 <h2 class="text-black font-bold text-2xl mb-2 text-center">FLEXIBLE PAYMENTS</h2>
                 <p class="text-black text-sm text-center">Spread your purchase with 4 easy payments.</p>
@@ -121,6 +121,31 @@
         </div>
     </div>
 
+
+</section> -->
+
+<section id="key-values">
+    <div class="container md:flex md:justify-around md:mx-auto md:py-20">
+        <div class="w-full flex flex-col justify-center items-center mb-8 mx-auto md:flex-row">
+            <div class="place-items-center text-center md:pl-4">
+                <img src="/img/Principles/fast-delivery.png" alt="Fast Delivery">
+                <h2 class="text-black font-bold text-2xl mb-2">FAST DELIVERY</h2>
+                <p class="text-black text-sm">Using the fastest delivery service in town.</p>
+            </div>
+
+            <div class="place-items-center text-center md:px-[13rem]">
+                <img src="/img/Principles/best-quality.png" alt="Best Quality">
+                <h2 class="text-black font-bold text-2xl mb-2">BEST QUALITY</h2>
+                <p class="text-black text-sm text-center">Our products use the best materials.</p>
+            </div>
+
+            <div class="place-items-center text-center md:pr-4">
+                <img src="/img/Principles/flexible-payment.png" alt="Flexible Payment" class="">
+                <h2 class="text-black font-bold text-2xl mb-2">FLEXIBLE PAYMENTS</h2>
+                <p class="text-black text-sm text-center">Spread your purchase with 4 easy payments.</p>
+            </div>
+        </div>
+    </div>
 
 </section>
 
@@ -147,5 +172,4 @@
     </div>
 </section>
 <!-- Newsletter end -->
-
 <?= $this->endSection(); ?>

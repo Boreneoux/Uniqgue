@@ -4,5 +4,6 @@ const navMenu = document.querySelector('#nav-menu');
 
 hamburger.addEventListener('click', function() {
     hamburger.classList.toggle('hamburger-active');
-    navMenu.classList.toggle('hidden');
+    navMenu.classList.toggle('-left-full');
+    navMenu.classList.toggle('left-0');
 });
