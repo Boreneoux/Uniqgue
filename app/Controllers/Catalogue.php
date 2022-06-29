@@ -13,6 +13,7 @@ class Catalogue extends BaseController
         $this->categoryModel = new CategoryModel();
         $this->productModel = new ProductModel();
     }
+    
     public function index()
     {
         $category = $this->categoryModel->findAll();
@@ -53,6 +54,7 @@ class Catalogue extends BaseController
         return view('catalogue/category', $data);
     }
     public function product($p_slug){
+        $this->get_current_url();
         $product = $this->productModel->getProductDetailed($p_slug);
         //dd($product[0]['product_size']);
         $size = explode(',',$product[0]['product_size']) ;

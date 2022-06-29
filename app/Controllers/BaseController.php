@@ -49,4 +49,12 @@ abstract class BaseController extends Controller
 
         // E.g.: $this->session = \Config\Services::session();
     }
+    protected function get_current_url()
+    {
+        if(session()->has('current_url')){
+            session()->remove('current_url');
+        }
+        session()->set(['current_url' => base_url(uri_string())]);
+        // dd(session()->get('current_url'));
+    }
 }
