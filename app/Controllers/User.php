@@ -68,6 +68,11 @@ class User extends BaseController
     private function setUserSession($user)
     {
         $cartItem = $this->cartModel->findCartDecoded((int)$user['user_id']);
+        if (count($cartItem)==0){
+            $this->cartModel->save(['user_id'=>(int)$user['user_id']]);
+            $cartItem=[];
+            $cartItem = $this->cartModel->findCartDecoded((int)$user['user_id']);
+        }
         if($cartItem[0]['cart_item']==null){
             $cartItem[0]['cart_item'] = [];
         }
@@ -96,7 +101,7 @@ class User extends BaseController
             'password'=>'required|min_length[8]|max_length[50]',
             // 'password_confirm'=>'required|min_length[8]|max_length[50]|matches[password]',
             'password_confirm'=> [
-                // 'label'  => 'Password',
+                'label'  => 'password confirmation',
                 'rules'  => 'required|min_length[8]|max_length[50]|matches[password]',
                 'errors' => [
                     'matches' => "Your password confirmation don't match",
