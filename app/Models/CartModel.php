@@ -25,9 +25,9 @@ class CartModel extends Model
             foreach($cart as $key=>$ct){
                 // if(isset($ct['cart_item'])){
                 // dd($ct['cart_item']);
-                if ($ct['cart_item']!=null){
-                    $itemDecoded = json_decode($ct['cart_item'],true);
-                }
+                // if ($ct['cart_item']!=null){
+                    $itemDecoded = json_decode((string)$ct['cart_item'],true);
+                // }
                 // }
                 // $ct['cart_item'] = $itemDecoded;
                 // dd($itemDecoded);
