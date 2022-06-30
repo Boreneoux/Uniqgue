@@ -27,6 +27,7 @@ class CartModel extends Model
                 // dd($ct['cart_item']);
                 // if ($ct['cart_item']!=null){
                     $itemDecoded = json_decode((string)$ct['cart_item'],true);
+                    // $itemDecoded = json_decode($ct['cart_item'],true);
                 // }
                 // }
                 // $ct['cart_item'] = $itemDecoded;

@@ -135,9 +135,10 @@ class Cart extends BaseController
         foreach($cartItem as $index=>$item){
             if($index==$key){
                 unset($cartItem[$key]);
-                array_values($cartItem);
             }
         }
+        $cartItem=array_values($cartItem);
+        // dd($cartItem);
         session()->remove('cart_item');
         session()->set(['cart_item'=>$cartItem]);
         $forCartInDB = [
