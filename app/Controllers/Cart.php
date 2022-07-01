@@ -105,28 +105,63 @@ class Cart extends BaseController
     public function save()
     {
         $cartUpdate= $this->request->getVar();
+        $cartInSession= session()->get('cart_item');
         $old_qty = [];
         $new_qty = [];
-        $current_arr=[];
+        // $current_arr=[];
+        $newCart=[];
         // dd(explode('_','qtyold_1'));
+        // dd($cartUpdate);
         foreach ($cartUpdate as $key=>$qty){
             $current=explode('_',$key);
             if($current[0]=='qtyold'){
-                $current_arr=[
-                    (int)$current[1]=>(int)$qty
-                ];
-                array_push($old_qty,$current_arr);
-                $current_arr = [];
+                // $current_arr=[
+                //     (int)$current[1]=>(int)$qty
+                // ];
+                // array_push($old_qty,$current_arr);
+                // $old_qty[]=$current_arr;
+                $old_qty[(int)$current[1]]=(int)$qty;
+                // $current_arr = [];
             }
             if($current[0]=='qty'){
-                $current_arr=[
-                    (int)$current[1]=>(int)$qty
-                ];
-                array_push($new_qty,$current_arr);
-                $current_arr = [];
+                // $current_arr=[
+                //     (int)$current[1]=>(int)$qty
+                // ];
+                $new_qty[(int)$current[1]]=(int)$qty;
+                // array_push($new_qty,$current_arr);
+                // $new_qty[]=$current_arr;
+                // $current_arr = [];
+                if($old_qty[(int)$current[1]]!=$new_qty[(int)$current[1]]){
+                    // array_push($newCart,$new_qty);
+                    $newCart[(int)$current[1]]=$new_qty[(int)$current[1]];
+                }
+                else{
+                    // array_push($newCart,$old_qty);
+                    $newCart[(int)$current[1]]=$old_qty[(int)$current[1]];
+                }
             }
         }
-        dd($cartUpdate);
+
+        foreach ($cartInSession as $index=>$cartItem){
+            if($cartInSession[$index]['qty']!=$newCart[$index]){
+                $cartInSession[$index]['qty']=$newCart[$index];
+                $cartInSession[$index]['qty_times_price']=$newCart[$index]*$cartInSession[$index]['price'];
+            }
+        }
+        session()->remove('cart_item');
+        session()->set(['cart_item'=>$cartInSession]);
+        $forCartInDB = [
+            'cart_id'=>session()->get('cart_id'),
+            'cart_item'=>session()->get('cart_item')
+        ];
+        // dd($forCartInDB);
+        $this->cartModel->save($forCartInDB);
+        // dd(session()->get('cart_item'));
+        session()->set(['cart_edit'=>false]);
+        session()->setFlashdata(['success'=>'Successfully edited!']);
+        return redirect()->to(base_url('/cart'));
+        // dd($cartInSession);
+        // dd($newCart);
     }
     public function delete($key)
     {
