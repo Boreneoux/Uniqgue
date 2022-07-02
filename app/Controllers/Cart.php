@@ -163,7 +163,7 @@ class Cart extends BaseController
         // dd(session()->get('cart_item'));
 
         session()->set(['cart_edit'=>false]);
-        session()->setFlashdata(['success'=>'Successfully edited!']);
+        session()->setFlashdata(['success'=>'Successfully edited !']);
 
         return redirect()->to(base_url('/cart'));
         // dd($cartInSession);
