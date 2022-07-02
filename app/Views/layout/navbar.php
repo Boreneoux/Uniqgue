@@ -39,7 +39,6 @@
             </nav>
             <!-- <div class=""> <a href="<?= base_url('/user/profile'); ?>"><?= session()->get('fullname'); ?></a></div>
             <a href="<?= base_url("/user/logout"); ?> " class="">Logout</a> -->
->>>>>>> main
         <?php else : ?>
 
             <div id="profile" class="md:px-2"><a href="javascript:void(0);"><svg width="30px" height="30px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
