@@ -13,7 +13,7 @@ class Cart extends BaseController
         $this->cartModel = new CartModel();
         $this->productModel = new ProductModel();
     }
-    
+
     public function index()
     {
         $this->get_current_url();
@@ -40,11 +40,11 @@ class Cart extends BaseController
                 //kalo ada, validasi input, kalo lolos validasi baru push ke cart item di session
                 $validation = $this->validate([
                     'qty' => [
-                        'rules'=>'required|greater_than[0]',
-                        'errors'=>[
-                            'greater_than'=>'Quantity should be greater than 0 !'
+                        'rules' => 'required|greater_than[0]',
+                        'errors' => [
+                            'greater_than' => 'Quantity should be greater than 0 !'
                         ]
-                        ],
+                    ],
                     'price' => 'required',
                     'size' => 'required',
                 ]);
@@ -53,43 +53,42 @@ class Cart extends BaseController
                     // $this->get_current_url();
                     // return view("catalogue/detail", ['validation' => $this->validator]);
                     // dd(session()->get('current_url'));
-                    session()->setFlashdata(['validation'=>$this->validator]);
+                    session()->setFlashdata(['validation' => $this->validator]);
                     return redirect()->to(session()->get('current_url'));
                 } else {
                     $newCart = [
                         // 'cart'=>[
-                            [
-                                // 'email'=> session()->get('email'),
-                                // 'fullname'=> session()->get('fullname'),
-                                // 'cart_id'=> session()->get('fullname'),
-                                'product_slug'=>$this->request->getVar('slug'),
-                                'product_name'=>$this->request->getVar('product_name'),
-                                'qty'=>(int)$this->request->getVar('qty'),
-                                'size'=>$this->request->getVar('size'),
-                                'price'=>(int)$this->request->getVar('price'),
-                                'qty_times_price'=>(int)$this->request->getVar('price')*(int)$this->request->getVar('qty'),
-                            ]
+                        [
+                            // 'email'=> session()->get('email'),
+                            // 'fullname'=> session()->get('fullname'),
+                            // 'cart_id'=> session()->get('fullname'),
+                            'product_slug' => $this->request->getVar('slug'),
+                            'product_name' => $this->request->getVar('product_name'),
+                            'qty' => (int)$this->request->getVar('qty'),
+                            'size' => $this->request->getVar('size'),
+                            'price' => (int)$this->request->getVar('price'),
+                            'qty_times_price' => (int)$this->request->getVar('price') * (int)$this->request->getVar('qty'),
+                        ]
                         // ]                        
                     ];
                     // dd($newCart);
                     // dd(session()->get());
-                    session()->push('cart_item',$newCart);
-                    $cartExist= $this->cartModel->select('cart_id')->where('user_id',session()->get('user_id'))->first();
+                    session()->push('cart_item', $newCart);
+                    $cartExist = $this->cartModel->select('cart_id')->where('user_id', session()->get('user_id'))->first();
                     // dd($cartExist);
-                    if($cartExist['cart_id']){
+                    if ($cartExist['cart_id']) {
                         $forCartInDB = [
-                            'cart_id'=>session()->get('cart_id'),
-                            'cart_item'=>session()->get('cart_item')
+                            'cart_id' => session()->get('cart_id'),
+                            'cart_item' => session()->get('cart_item')
                         ];
-                    }
-                    else{
+                    } else {
                         $forCartInDB = [
-                            'user_id'=>session()->get('user_id'),
-                            'cart_item'=>session()->get('cart_item')
+                            'user_id' => session()->get('user_id'),
+                            'cart_item' => session()->get('cart_item')
                         ];
                     }
                     $this->cartModel->save($forCartInDB);
-                    session()->setFlashdata(['success'=>'Successfully added!']);
+                    session()->setFlashdata(['success' => 'Successfully added!']);
                     return redirect()->to(session()->get('current_url'));
                     // dd(session()->get('cart_item'));
                 }
@@ -99,11 +98,12 @@ class Cart extends BaseController
     }
     public function edit()
     {
-        session()->set(['cart_edit'=>true]);
+        session()->set(['cart_edit' => true]);
         return redirect()->to(base_url('/cart'));
     }
     public function save()
     {
+
         $cartUpdate= $this->request->getVar();
         $cartInSession= session()->get('cart_item');
         $old_qty = [];
@@ -115,11 +115,13 @@ class Cart extends BaseController
         foreach ($cartUpdate as $key=>$qty){
             $current=explode('_',$key);
             if($current[0]=='qtyold'){
+            
                 // $current_arr=[
                 //     (int)$current[1]=>(int)$qty
                 // ];
                 // array_push($old_qty,$current_arr);
                 // $old_qty[]=$current_arr;
+
                 $old_qty[(int)$current[1]]=(int)$qty;
                 // $current_arr = [];
             }
@@ -142,6 +144,7 @@ class Cart extends BaseController
             }
         }
 
+
         foreach ($cartInSession as $index=>$cartItem){
             if($cartInSession[$index]['qty']!=$newCart[$index]){
                 $cartInSession[$index]['qty']=$newCart[$index];
@@ -153,12 +156,15 @@ class Cart extends BaseController
         $forCartInDB = [
             'cart_id'=>session()->get('cart_id'),
             'cart_item'=>session()->get('cart_item')
+
         ];
         // dd($forCartInDB);
         $this->cartModel->save($forCartInDB);
         // dd(session()->get('cart_item'));
+
         session()->set(['cart_edit'=>false]);
         session()->setFlashdata(['success'=>'Successfully edited!']);
+
         return redirect()->to(base_url('/cart'));
         // dd($cartInSession);
         // dd($newCart);
@@ -167,18 +173,18 @@ class Cart extends BaseController
     {
         $key = (int)$key;
         $cartItem = session()->get('cart_item');
-        foreach($cartItem as $index=>$item){
-            if($index==$key){
+        foreach ($cartItem as $index => $item) {
+            if ($index == $key) {
                 unset($cartItem[$key]);
             }
         }
-        $cartItem=array_values($cartItem);
+        $cartItem = array_values($cartItem);
         // dd($cartItem);
         session()->remove('cart_item');
-        session()->set(['cart_item'=>$cartItem]);
+        session()->set(['cart_item' => $cartItem]);
         $forCartInDB = [
-            'cart_id'=>session()->get('cart_id'),
-            'cart_item'=>session()->get('cart_item')
+            'cart_id' => session()->get('cart_id'),
+            'cart_item' => session()->get('cart_item')
         ];
         $this->cartModel->save($forCartInDB);
         return redirect()->to(base_url('/cart'));
@@ -186,7 +192,7 @@ class Cart extends BaseController
     }
     public function cancel()
     {
-        session()->set(['cart_edit'=>false]);
+        session()->set(['cart_edit' => false]);
         return redirect()->to(base_url('/cart'));
     }
 }

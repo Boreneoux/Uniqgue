@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 body {
+  height: auto;
   font-family: "Oswald", sans-serif;
 }
 

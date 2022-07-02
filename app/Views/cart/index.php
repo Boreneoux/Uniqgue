@@ -7,18 +7,24 @@
 <?php //dd(session()->get('cart_item')); 
 ?>
 <?php if (session()->get('success')) : ?>
+
       <div>
          <?= session()->get('success'); ?>
       </div>
    <?php endif; ?>
+
 <?php if (session()->get('cart_edit') == false) : ?>
-    <?php $edit=""; $editTxtNum="readonly='readonly'"?>
+    <?php $edit = "";
+    $editTxtNum = "readonly='readonly'" ?>
     <a href="<?= base_url('/cart/edit'); ?>">Edit Cart</a>
-    <?php else : ?>
-        <?php $edit="disabled='disabled'"; $editTxtNum='';?>
-    <!-- <a href="<?php // echo base_url('/cart/save'); ?>">Save</a> -->
+<?php else : ?>
+    <?php $edit = "disabled='disabled'";
+    $editTxtNum = ''; ?>
+    <!-- <a href="<?php // echo base_url('/cart/save'); 
+                    ?>">Save</a> -->
     <a href="<?= base_url('/cart/cancel'); ?>">Cancel</a>
 <?php endif; ?>
+
 <?php if (session()->get('cart_edit') == true) : $destination='save';?>
 <form action="/cart/save" method="post">
 <?php else: $destination='checkout';?>
