@@ -41,9 +41,19 @@ $routes->get('/', 'Pages::home');
 
 //catalogue and its child
 $routes->get('catalogue', 'Catalogue::index');
+$routes->get('cart', 'Cart::index', ['filter'=>'auth']);
+$routes->get('cart/delete/(:segment)', 'Cart::delete/$1', ['filter'=>'auth']);
+$routes->match(['get','post'],'cart/(:any)', 'Cart::$1', ['filter'=>'auth']);
+$routes->match(['get','post'],'cart/add/(:segment)', 'Cart::add/$1', ['filter'=>'auth']);
+// $routes->get('cart/decode', 'Cart::decode');
 $routes->get('catalogue/index', 'Catalogue::index');
 $routes->get('catalogue/(:segment)', 'Catalogue::category/$1');
 $routes->get('product/(:segment)', 'Catalogue::product/$1');
+$routes->get('user', 'User::index',['filter'=>'noauth']);
+$routes->match(['get','post'],'user/login', 'User::login',['filter'=>'noauth']);
+$routes->match(['get','post'],'user/register', 'User::register',['filter'=>'noauth']);
+$routes->get('user/logout', 'User::logout',['filter'=>'auth']);
+$routes->get('user/profile', 'User::profile',['filter'=>'auth']);
 
 //static site
 $routes->get('(:any)', 'Pages::$1');
