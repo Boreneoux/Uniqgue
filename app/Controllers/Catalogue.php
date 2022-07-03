@@ -22,18 +22,19 @@ class Catalogue extends BaseController
         $i = 0;
         foreach ($category as $ctg) {
             $counter = 0;
-            $i=0;
-            foreach ($product as $prd) {
+            // $i=0;
+            foreach ($product as $key=> $prd) {
                 //dd($product[$i]);
                 if ($prd['category_name'] == $ctg['category_name']) {
                     $counter++;
                     if ($counter>3){
-                        unset($product[$i]);
+                        unset($product[$key]);
                     }
+                    // $i++;
                 }
-                $i++;
             }
         }
+        $product=array_values($product);
         // dd($product);
         // exit;
         $data = [
