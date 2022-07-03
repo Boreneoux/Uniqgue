@@ -16,8 +16,6 @@
 
             <div class="mt-5">
                 <form action="/cart/add/<?= $product[0]['product_slug']; ?>" method="post">
-                    <?php //dd($product[0]['product_size']); 
-                    ?>
                     <?php if ($product[0]['product_size'][0] != 'general') : ?>
                         <?php foreach ($product[0]['product_size'] as $size) : ?>
                             <div class=" border active:border-black hover:border-black focus:outline-none focus:ring-black focus:border-black text-center">
