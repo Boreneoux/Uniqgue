@@ -7,8 +7,8 @@
 <!-- product wrapper -->
 <div class="bg-[#F3F3F3]">
    <?php foreach ($category as $ctg) : ?>
-      <div class="pt-8 pb-4">
-         <h2 class="lg:ml-6 text-4xl font-medium text-black uppercase mb-6 "><?= $ctg['category_name']; ?></h2>
+      <div class="pt-8 pb-6">
+         <h2 class="lg:ml-6 md:ml-4 ml-2 text-4xl font-medium text-black uppercase mb-6"><?= $ctg['category_name']; ?></h2>
          <a href="/catalogue/<?= $ctg['category_slug']; ?>" class="right-5 lg:right-20 absolute text-2xl hover:text-slate-500">More Stuff...</a>
       </div>
 

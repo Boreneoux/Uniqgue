@@ -3,7 +3,7 @@
 <header class="bg-transparent text-black py-8 w-full">
     <!-- Chlass saia tidak tau mana tombol account ama cart nya jadi kuletakkan link nya disini -->
 
-    <div class="container flex justify-around items-center w-full mx-auto fixed bg-white py-6 top-0 md:items-center md:static md:py-0 md:bg-transparent">
+    <div class="container flex justify-around items-center z-50 w-full mx-auto fixed bg-white py-6 top-0 md:items-center md:static md:py-0 md:bg-transparent">
         <button id="hamburger" name="hamburger" type="button" class="block left-2 md:hidden">
             <span class="hamburger-line transition duration-300 ease-in-out origin-top-left"></span>
             <span class="hamburger-line transition duration-300 ease-in-out"></span>
