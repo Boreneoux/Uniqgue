@@ -7,19 +7,20 @@
     <h1><?= $product[0]['product_name']; ?></h1>
     <h2><?= $product[0]['product_price']; ?></h2>
     <h2><?= $product[0]['product_desc']; ?></h2>
-    <img src="<?= $product[0]['product_img']; ?>" alt="not found">
+    <img src="/img/Product/<?= $product[0]['product_img']; ?>" alt="not found">
 </ul>
 
 <form action="/cart/add/<?= $product[0]['product_slug']; ?>" method="post">
-<?php //dd($product[0]['product_size']); ?>
-    <?php if($product[0]['product_size'][0]!='general') :?>
-    <?php foreach ($product[0]['product_size'] as $size) : ?>
-        <div>
-            <input type="radio" name="size" id="size" value="<?= $size; ?>">
-            <label for="size"><?= $size; ?></label>
-        </div>
-    <?php endforeach; ?>
-    <?php else: ?>
+    <?php //dd($product[0]['product_size']); 
+    ?>
+    <?php if ($product[0]['product_size'][0] != 'general') : ?>
+        <?php foreach ($product[0]['product_size'] as $size) : ?>
+            <div>
+                <input type="radio" name="size" id="size" value="<?= $size; ?>">
+                <label for="size"><?= $size; ?></label>
+            </div>
+        <?php endforeach; ?>
+    <?php else : ?>
         <input type="hidden" name="size" id="size" value="<?= $product[0]['product_size'][0]; ?>">
     <?php endif; ?>
     <div>
@@ -37,12 +38,12 @@
 </form>
 <?php if (session()->get('validation')) : ?>
     <?php $validation = session()->get('validation'); ?>
-      <ul>
-         <li><?= $validation->listErrors(); ?></li>
-      </ul>
-      <?php elseif (session()->get('success')) : ?>
-      <h3><?= session()->get('success'); ?></h3>
-    <?php else: ?>
-   <?php endif; ?>
+    <ul>
+        <li><?= $validation->listErrors(); ?></li>
+    </ul>
+<?php elseif (session()->get('success')) : ?>
+    <h3><?= session()->get('success'); ?></h3>
+<?php else : ?>
+<?php endif; ?>
 
 <?= $this->endSection(); ?>
