@@ -13,7 +13,7 @@
 </ul>
 <ul>
     <?php foreach ($product as $prd) : ?>
-        <li><a href="/product/<?= $prd['product_slug']; ?>"> <?= $prd['product_name']; ?></a></li>
+        <li><a href="/product/<?= $prd['product_slug']; ?>"> <?= $prd['product_name']; ?> <img src="/img/Product/<?= $prd['product_img'] ?>" alt="<?= $prd['product_slug']; ?>"></a></li>
     <?php endforeach; ?>
 </ul>
 <?= $this->endSection(); ?>
