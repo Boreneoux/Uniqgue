@@ -35,7 +35,7 @@
                         <h4 class="uppercase font-medium text-xl mb-2 text-black hover:text-slate-400 transition"><?= $prd['product_name']; ?></h4>
                      </a>
                      <p class="text-lg text-gray-500 font-base"><?= $prd['product_desc']; ?></p>
-                     <p class="text-lg text-black font-semibold">IDR <?= $prd['product_price']; ?></p>
+                     <p class="text-lg text-black font-semibold">IDR <?=number_format($prd['product_price'],0,',','.') ; ?></p>
                   </div>
                   <!-- product content end
                <!-- single product end -->

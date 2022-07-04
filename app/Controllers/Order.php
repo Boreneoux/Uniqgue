@@ -17,6 +17,19 @@ class Order extends BaseController
     }
     public function index()
     {
+        // dd($this->request->getVar());
+        $checkKey = 0;
+        $keyFromRequest = $this->request->getVar();
+        foreach ($keyFromRequest as $key => $value) {
+            $currentKey = explode('_', $key);
+            if ($currentKey[0] == 'key') {
+                $checkKey++;
+            }
+        }
+        if ($checkKey == 0) {
+            session()->setFlashdata(['keyEmpty' => 'Order cannot be empty']);
+            return redirect()->to(base_url('cart'));
+        }
         if (session()->has('orderProceed')) {
             session()->remove('orderProceed');
         }
@@ -43,16 +56,19 @@ class Order extends BaseController
             // }
         }
         session()->set(['orderProceed' => $orderProceed]);
+        session()->set(['purchased' => $purchased]);
+        session()->set(['total' => $total]);
         // dd($purchased);
         return view('order/index', ['tittle' => 'Checkout', 'orderProceed' => $orderProceed, 'payment' => $this->paymentModel->findAll(), 'total' => $total, 'purchased' => $purchased]);
     }
     public function buy()
     {
         helper(['form']);
-        // dd((int)$this->request->getVar('payment'));
-        $paymentName = $this->paymentModel->select('payment_name')->where(['payment_id'=>(int)$this->request->getVar('payment')])->find();
-        // dd($paymentName);
-        $paymentName=(string)$paymentName[0]['payment_name'];
+        $validation = $this->validate([
+            'payment' => 'required',
+        ]);
+        // dd((int)$this->request->getVar());
+
         $prepOrderID = $this->uniqidReal();
         $chekOrderExist = $this->orderModel->select('order_id')->where(['order_id' => $prepOrderID])->find();
         while (count($chekOrderExist) != 0) {
@@ -61,12 +77,13 @@ class Order extends BaseController
         }
         // dd($prepOrderID);
         // dd($this->request->getVar());
-        $validation = $this->validate([
-            'payment' => 'required',
-        ]);
+
         if (!$validation) {
-            return view('order/index', ['validation' => $this->validator, 'orderProceed' => session()->get('orderProceed'), 'payment' => $this->paymentModel->findAll()]);
+            return view('order/index', ['validation' => $this->validator, 'orderProceed' => session()->get('orderProceed'), 'payment' => $this->paymentModel->findAll(),'purchased'=>session()->get('purchased'),'total'=>session()->get('total')]);
         } else {
+            $paymentName = $this->paymentModel->select('payment_name')->where(['payment_id' => (int)$this->request->getVar('payment')])->find();
+            // dd($paymentName);
+            $paymentName = (string)$paymentName[0]['payment_name'];
             $cart = session()->get('cart_item');
             $orderProceed = session()->get('orderProceed');
             // dd($orderProceed);
@@ -114,8 +131,9 @@ class Order extends BaseController
             $this->cartModel->save($forCartInDB);
             $this->orderModel->save($forOrderInDB);
             session()->remove('orderProceed');
+            session()->remove('purchased');
             // dd($purchased);
-            session()->setFlashdata(['success_tr'=>'Transaction successful!']);
+            session()->setFlashdata(['success_tr' => 'Transaction successful!']);
             return redirect()->to(base_url('cart'));
             // $this->cartModel->save($cart);
         }

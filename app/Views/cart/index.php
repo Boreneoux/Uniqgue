@@ -17,6 +17,11 @@
          <?= session()->get('success_tr'); ?>
       </div>
    <?php endif; ?>
+<?php if(session()->get('keyEmpty')) :?>
+    <div>
+         <?= session()->get('keyEmpty'); ?>
+      </div>
+   <?php endif; ?>
 <?php if (session()->get('cart_edit') == false) : ?>
     <?php $edit = "";
     $editTxtNum = "readonly='readonly'" ?>
@@ -42,6 +47,7 @@
             <label for="key"><?= $item['product_name']; ?></label>
             <input type="checkbox" name="key_<?= $key; ?>" id="key" <?= $edit; ?> value="<?= (int)$item['qty']; ?>">
             <input type="number" name="qty_<?= $key; ?>" id="qty_<?= $key; ?>" value="<?= (int)$item['qty']; ?>" <?= $editTxtNum; ?>>
+            Size : <?= $item['size']; ?>| Price: IDR <?=number_format($item['price'],0,',','.') ; ?>| Total : IDR <?=number_format($item['qty_times_price'],0,',','.') ; ?>
             <a href="<?= base_url("cart/delete/$key"); ?>">Delete</a>
         </div>
     <?php endforeach; ?>

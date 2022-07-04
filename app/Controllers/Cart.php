@@ -17,6 +17,17 @@ class Cart extends BaseController
     public function index()
     {
         $this->get_current_url();
+        // dd(session()->get('orderProceed'));
+        if (
+            session()->has('orderProceed') ||
+            session()->has('purchased') ||
+            session()->has('total')
+        ) {
+            session()->remove('orderProceed');
+            session()->remove('purchased');
+            session()->remove('total');
+        }
+        // dd(session()->get('purchased'));
         $data = [
             "tittle" => "Cart",
             'cart' => $this->cartModel->findCartDecoded((int)session()->get('user_id'))
@@ -40,6 +51,7 @@ class Cart extends BaseController
                 //kalo ada, validasi input, kalo lolos validasi baru push ke cart item di session
                 $validation = $this->validate([
                     'qty' => [
+                        'label' => 'Quantity',
                         'rules' => 'required|greater_than[0]',
                         'errors' => [
                             'greater_than' => 'Quantity should be greater than 0 !'
@@ -104,66 +116,65 @@ class Cart extends BaseController
     public function save()
     {
 
-        $cartUpdate= $this->request->getVar();
-        $cartInSession= session()->get('cart_item');
+        $cartUpdate = $this->request->getVar();
+        $cartInSession = session()->get('cart_item');
         $old_qty = [];
         $new_qty = [];
         // $current_arr=[];
-        $newCart=[];
+        $newCart = [];
         // dd(explode('_','qtyold_1'));
         // dd($cartUpdate);
-        foreach ($cartUpdate as $key=>$qty){
-            $current=explode('_',$key);
-            if($current[0]=='qtyold'){
-            
+        foreach ($cartUpdate as $key => $qty) {
+            $current = explode('_', $key);
+            if ($current[0] == 'qtyold') {
+
                 // $current_arr=[
                 //     (int)$current[1]=>(int)$qty
                 // ];
                 // array_push($old_qty,$current_arr);
                 // $old_qty[]=$current_arr;
 
-                $old_qty[(int)$current[1]]=(int)$qty;
+                $old_qty[(int)$current[1]] = (int)$qty;
                 // $current_arr = [];
             }
-            if($current[0]=='qty'){
+            if ($current[0] == 'qty') {
                 // $current_arr=[
                 //     (int)$current[1]=>(int)$qty
                 // ];
-                $new_qty[(int)$current[1]]=(int)$qty;
+                $new_qty[(int)$current[1]] = (int)$qty;
                 // array_push($new_qty,$current_arr);
                 // $new_qty[]=$current_arr;
                 // $current_arr = [];
-                if($old_qty[(int)$current[1]]!=$new_qty[(int)$current[1]]){
+                if ($old_qty[(int)$current[1]] != $new_qty[(int)$current[1]]) {
                     // array_push($newCart,$new_qty);
-                    $newCart[(int)$current[1]]=$new_qty[(int)$current[1]];
-                }
-                else{
+                    $newCart[(int)$current[1]] = $new_qty[(int)$current[1]];
+                } else {
                     // array_push($newCart,$old_qty);
-                    $newCart[(int)$current[1]]=$old_qty[(int)$current[1]];
+                    $newCart[(int)$current[1]] = $old_qty[(int)$current[1]];
                 }
             }
         }
 
 
-        foreach ($cartInSession as $index=>$cartItem){
-            if($cartInSession[$index]['qty']!=$newCart[$index]){
-                $cartInSession[$index]['qty']=$newCart[$index];
-                $cartInSession[$index]['qty_times_price']=$newCart[$index]*$cartInSession[$index]['price'];
+        foreach ($cartInSession as $index => $cartItem) {
+            if ($cartInSession[$index]['qty'] != $newCart[$index]) {
+                $cartInSession[$index]['qty'] = $newCart[$index];
+                $cartInSession[$index]['qty_times_price'] = $newCart[$index] * $cartInSession[$index]['price'];
             }
         }
         session()->remove('cart_item');
-        session()->set(['cart_item'=>$cartInSession]);
+        session()->set(['cart_item' => $cartInSession]);
         $forCartInDB = [
-            'cart_id'=>session()->get('cart_id'),
-            'cart_item'=>session()->get('cart_item')
+            'cart_id' => session()->get('cart_id'),
+            'cart_item' => session()->get('cart_item')
 
         ];
         // dd($forCartInDB);
         $this->cartModel->save($forCartInDB);
         // dd(session()->get('cart_item'));
 
-        session()->set(['cart_edit'=>false]);
-        session()->setFlashdata(['success'=>'Successfully edited !']);
+        session()->set(['cart_edit' => false]);
+        session()->setFlashdata(['success' => 'Successfully edited !']);
 
         return redirect()->to(base_url('/cart'));
         // dd($cartInSession);

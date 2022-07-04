@@ -10,7 +10,7 @@
         <img class="bg-[#D1BEB0] rounded mx-auto md:mx-0 md:w-[500px] md:h-[500px]" src="/img/Product/<?= $product[0]['product_img']; ?>" alt="<?= $product[0]['product_name'] ?>">
         <div class="mx-auto mt-5 md:mx-5">
             <h1 class="text-2xl mb-2"><?= $product[0]['product_name']; ?></h1>
-            <h2 class="text-xl font-bold mb-4">IDR <?= $product[0]['product_price']; ?></h2>
+            <h2 class="text-xl font-bold mb-4">IDR <?=number_format($product[0]['product_price'],0,',','.') ; ?></h2>
             <h2 class="text-lg font-thin">Details: <br> <?= $product[0]['product_desc']; ?></h2>
 
 
@@ -38,6 +38,15 @@
                     <div class="border bg-[#D1BEB0] text-center rounded hover:border-black focus:outline-none focus:ring-black active:border-black hover:bg-slate-300 text-xl">
                         <button type="submit" name="submit" id="submit"> + ADD TO CART</button>
                     </div>
+                    <!-- message kalo berhasil ato gk gagal -->
+                    <?php if(session()->has('validation')) :?>
+                        <?php $validation=session()->get('validation'); ?>
+                        <ul>
+                            <li><?= $validation->listErrors(); ?></li>
+                        </ul>
+                        <?php elseif(session()->has('success')): ?>
+                        <p><?= session()->get('success'); ?></p>
+                    <?php endif; ?>
                 </form>
             </div>
         </div>
