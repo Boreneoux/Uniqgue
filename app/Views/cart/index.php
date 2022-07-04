@@ -12,7 +12,11 @@
          <?= session()->get('success'); ?>
       </div>
    <?php endif; ?>
-
+<?php if(session()->get('success_tr')) :?>
+    <div>
+         <?= session()->get('success_tr'); ?>
+      </div>
+   <?php endif; ?>
 <?php if (session()->get('cart_edit') == false) : ?>
     <?php $edit = "";
     $editTxtNum = "readonly='readonly'" ?>

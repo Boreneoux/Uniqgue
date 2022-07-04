@@ -78,9 +78,10 @@ class User extends BaseController
         }
         $data=[
             'user_id'=>$user['user_id'],
-            'fullname'=>$user['fullname'],
+            'fullname'=>(string)$user['fullname'],
             'email'=>$user['email'],
-            'address'=>$user['address'],
+            'address'=>(string)$user['address'],
+            'kode_pos'=>(string)$user['kode_pos'],
             'role'=>$user['role'],
             'cart_id'=>$cartItem[0]['cart_id'],
             'cart_item'=>$cartItem[0]['cart_item'],

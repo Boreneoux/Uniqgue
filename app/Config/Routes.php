@@ -44,6 +44,8 @@ $routes->get('catalogue', 'Catalogue::index');
 $routes->get('cart', 'Cart::index', ['filter'=>'auth']);
 $routes->get('cart/delete/(:segment)', 'Cart::delete/$1', ['filter'=>'auth']);
 $routes->match(['get','post'],'cart/(:any)', 'Cart::$1', ['filter'=>'auth']);
+$routes->match(['get','post'],'order', 'Order::index', ['filter'=>'auth']);
+$routes->match(['get','post'],'order/(:any)', 'Order::$1', ['filter'=>'auth']);
 $routes->match(['get','post'],'cart/add/(:segment)', 'Cart::add/$1', ['filter'=>'auth']);
 // $routes->get('cart/decode', 'Cart::decode');
 $routes->get('catalogue/index', 'Catalogue::index');
