@@ -19,7 +19,7 @@ class Catalogue extends BaseController
         $category = $this->categoryModel->findAll();
         $product = $this->productModel->getProductLimited();
         $counter = 0;
-        $i = 0;
+        // $i = 0;
         foreach ($category as $ctg) {
             $counter = 0;
             // $i=0;

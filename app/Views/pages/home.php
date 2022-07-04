@@ -17,12 +17,12 @@
                 </h3>
             </div>
             <div class="flex justify-center flex-col md:flex-row items-center ">
-
+                <?php foreach($product as $pr): ?>
                 <button class="bg-[#D1BEB0] font-bold rounded py-4 px-8 shadow-lg uppercase tracking-wider w-[208px] h-[200px] mx-2 my-2 md:my-0 hover:bg-slate-200">
-                    Pre Ubah 1
+                    <?= $pr['product_name']; ?>
                 </button>
-
-                <button class="bg-[#D1BEB0] font-bold rounded py-4 px-8 shadow-lg uppercase tracking-wider w-[208px] h-[200px] mx-2 my-2 md:my-0 hover:bg-slate-200">
+                <?php endforeach; ?>
+                <!-- <button class="bg-[#D1BEB0] font-bold rounded py-4 px-8 shadow-lg uppercase tracking-wider w-[208px] h-[200px] mx-2 my-2 md:my-0 hover:bg-slate-200">
                     Pre Order 2
                 </button>
 
@@ -36,7 +36,7 @@
 
                 <button class="bg-[#D1BEB0] font-bold rounded py-4 px-8 shadow-lg uppercase tracking-wider w-[208px] h-[200px] mx-2 my-2 md:my-0 hover:bg-slate-200">
                     Pre Order 5
-                </button>
+                </button> -->
             </div>
             <!-- <div class="flex flex-col md:flex-row mt-11 justify-center">
                 <div class="max-w-sm bg-[#D1BEB0] rounded-lg border border-gray-200 shadow-md dark:bg-[#D1BEB0] hover:bg-slate-200 mx-2">

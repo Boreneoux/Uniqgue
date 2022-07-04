@@ -133,7 +133,7 @@ class User extends BaseController
     public function profile()
     {
         helper(['form']);
-            $profile = $this->userModel->select('email,fullname,address,user_img')->where(['user_id'=>session()->get('user_id')])->find();
+            $profile = $this->userModel->select('email,fullname,address')->where(['user_id'=>session()->get('user_id')])->find();
             
             // dd(session());
             return view('/user/profile',['profile'=>$profile,'tittle'=>'Profile']);

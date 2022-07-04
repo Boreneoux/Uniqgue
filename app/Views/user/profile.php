@@ -21,7 +21,7 @@
                         <li class="border-black border-b-2 py-1"><?= $pr['address']; ?></li>
                     </ul>
                 </div>
-                <!-- <?= $pr['user_img']; ?> -->
+                <!-- <?php // $pr['user_img']; ?> -->
         </div>
     <?php endforeach; ?>
     </div>
