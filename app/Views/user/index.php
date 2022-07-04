@@ -11,11 +11,11 @@
          <div class="w-full px-4 mb-10 lg:w-1/2 ">
             <h2 class="mb-8 text-center text-2xl lg:text-4xl">LOGIN</h2>
             <form action="/user/login" method="post" class="flex flex-col">
-               <input type="email" name="email" id="email" class="mb-5 bg-transparent border-black border-b-2" placeholder="enter email" required>
+               <input type="email" name="email" id="email" class="mb-5 bg-transparent border-black border-b-2" placeholder="enter email" required value="<?= (old('email'))&&session()->has('login')?(old('email')):''; ?>">
                <input type="password" name="password" id="password" class="mb-5 bg-transparent border-black border-b-2" placeholder="enter password" required>
                <button type="submit" class="mt-5 px-4 py-2 rounded bg-[#D1BEB0] hover:bg-opacity-80 text-black font-semibold text-center focus:outline-none focus:ring focus:ring-offset-2 focus:ring-[#D1BEB0] focus:ring-opacity-80 cursor-pointer">LOGIN</button>
-               <?php if (isset($login)) : ?>
-                  <?php if (isset($validation)) : ?>
+               <?php if (session()->has('login')) : ?>
+                  <?php if (session()->has('validation')) : $validation=session()->get('validation');?>
                      <ul>
                         <li><?= $validation->listErrors(); ?></li>
                      </ul>
@@ -26,20 +26,20 @@
          <div class="w-full px-4 mt-20 lg:w-1/2 lg:mt-0 lg:border-black lg:border-l-2">
             <h2 class="text-center text-2xl mb-8 lg:text-4xl">REGISTER</h2>
             <div class="">
-               <?php if (session()->get('success')) : ?>
+               <?php if (session()->has('success')) : ?>
                   <div>
                      <?= session()->get('success'); ?>
                   </div>
                <?php endif; ?>
                <form action="/user/register" method="post" class="flex flex-col">
 
-                  <input type="text" name="fullname" id="fullname" class="mb-5 bg-transparent border-black border-b-2" placeholder="enter fullname" required>
+                  <input type="text" name="fullname" id="fullname" class="mb-5 bg-transparent border-black border-b-2" placeholder="enter fullname" required value="<?= (old('fullname'))&&session()->has('register')?(old('fullname')):''; ?>">
 
 
-                  <input type="email" name="email" id="email" class="mb-5 bg-transparent border-black border-b-2" placeholder="enter email" required>
+                  <input type="email" name="email" id="email" class="mb-5 bg-transparent border-black border-b-2" placeholder="enter email" required value="<?= (old('email'))&&session()->has('register')?(old('email')):''; ?>">
 
 
-                  <input type="text" name="address" id="address" class="mb-5 bg-transparent border-black border-b-2" placeholder="enter address" required>
+                  <input type="text" name="address" id="address" class="mb-5 bg-transparent border-black border-b-2" placeholder="enter address" required value="<?= (old('address'))&&session()->has('register')?(old('address')):''; ?>">
 
 
                   <input type="password" name="password" id="password" class="mb-5 bg-transparent border-black border-b-2" placeholder="enter password" minlength="8" required>
@@ -49,8 +49,8 @@
 
                   <button type="submit" class="mt-5 px-4 py-2 rounded bg-[#D1BEB0] hover:bg-opacity-80 text-black font-semibold text-center focus:outline-none focus:ring focus:ring-offset-2 focus:ring-[#D1BEB0] focus:ring-opacity-80 cursor-pointer">REGISTER</button>
                </form>
-               <?php if (isset($register)) : ?>
-                  <?php if (isset($validation)) : ?>
+               <?php if (session()->has('register')) : ?>
+                  <?php if (session()->has('validation')) : $validation=session()->get('validation');?>
                      <ul>
                         <li><?= $validation->listErrors(); ?></li>
                      </ul>

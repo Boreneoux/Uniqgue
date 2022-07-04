@@ -40,7 +40,9 @@ class User extends BaseController
             // $data = [
             //     "tittle"=>"Register"
             // ];
-            return view('user/index',['validation'=>$this->validator,'login'=>'login']);
+            // return view('user/index',['validation'=>$this->validator,'login'=>'login']);
+            session()->setFlashdata(['validation'=>$this->validator,'login'=>'login']);
+            return redirect()->to(base_url('user'))->withInput();
         }
         else{
             // $newData = [
@@ -113,7 +115,9 @@ class User extends BaseController
             // $data = [
             //     "tittle"=>"Register"
             // ];
-            return view('user/index',['validation'=>$this->validator,'register'=>'register']);
+            // return view('user/index',['validation'=>$this->validator,'register'=>'register']);
+            session()->setFlashdata(['validation'=>$this->validator,'register'=>'register']);
+            return redirect()->to(base_url('user'))->withInput();
         }
         else{
             $newData = [
