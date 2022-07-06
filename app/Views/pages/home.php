@@ -17,81 +17,48 @@
                 </h3>
             </div>
             <div class="flex justify-center flex-col md:flex-row items-center ">
-                <?php foreach($product as $pr): ?>
-                <button class="bg-[#D1BEB0] font-bold rounded py-4 px-8 shadow-lg uppercase tracking-wider w-[208px] h-[200px] mx-2 my-2 md:my-0 hover:bg-slate-200">
-                    <?= $pr['product_name']; ?>
-                </button>
+                <?php foreach ($product as $pr) : ?>
+                    <!-- <a href="/product/<?= $pr['product_slug']; ?>" class="bg-[#D1BEB0] font-bold rounded py-4 px-8 shadow-lg uppercase tracking-wider w-[208px] h-[200px] mx-2 my-2 md:my-0 hover:bg-slate-200">
+                        <?= $pr['product_name']; ?>
+                    </a> -->
+
+                    <!-- product image -->
+                    <!-- <div class="bg-[#D1BEB0] group-hover:opacity-70 transition">
+                        <a href="/product/<?= $pr['product_slug']; ?>">
+                            <img src="/img/Product/<?= $pr['product_img'] ?>" alt="<?= $pr['product_name'] ?>" class="object-contain w-[315px] h-[300px]">
+                        </a>
+                        <div class="relative inset-0 bg-black bg-opacity-40 flex items-center justify-center gap-2 opacity-0 group-hover:opacity-100 group-hover:bg-transparent transition">
+                        </div>
+                    </div> -->
+                    <!-- product image end -->
+
+                    <!-- product content -->
+                    <!-- <div class="pt-4 pb-3 px-4">
+                        <a href="/product/<?= $pr['product_slug']; ?>">
+                            <h4 class="uppercase font-medium text-xl mb-2 text-black hover:text-slate-400 transition"><?= $pr['product_name']; ?></h4>
+                        </a>
+                        <p class="text-lg text-gray-500 font-base"><?= $pr['product_desc']; ?></p>
+                        <p class="text-lg text-black font-semibold">IDR <?= number_format($pr['product_price'], 0, ',', '.'); ?></p>
+                    </div> -->
+                    <!-- product content end -->
+
+                    <!-- Trending Product -->
+
+                    <div class="">
+                        <a href="/product/<?= $pr['product_slug']; ?>" class="relative bg-[#D1BEB0] group group-hover:bg-black transition-all ease-in-out w-[208px] h-[220px] mx-2 block mb-4 rounded-xl">
+                            <img src="/img/Product/<?= $pr['product_img'] ?>" alt="<?= $pr['product_name'] ?>" class="group-hover:opacity-20">
+                            <div class="absolute opacity-0 group-hover:opacity-100 transition-all ease-in-out flex flex-col flex-grow-0 justify-center items-center place-items-center bottom-[30%] w-full">
+                                <p class="uppercase font-medium text-xl text-white drop-shadow-lg"><?= $pr['product_name']; ?></p>
+                                <p class="text-lg text-white drop-shadow-lg font-semibold">IDR <?= number_format($pr['product_price'], 0, ',', '.'); ?></p>
+                                <p class="text-white">Details →</p>
+                            </div>
+                        </a>
+
+
+                    </div>
+                    <!-- end trending product -->
                 <?php endforeach; ?>
-                <!-- <button class="bg-[#D1BEB0] font-bold rounded py-4 px-8 shadow-lg uppercase tracking-wider w-[208px] h-[200px] mx-2 my-2 md:my-0 hover:bg-slate-200">
-                    Pre Order 2
-                </button>
-
-                <button class="bg-[#D1BEB0] font-bold rounded py-4 px-8 shadow-lg uppercase tracking-wider w-[208px] h-[200px] mx-2 my-2 md:my-0 hover:bg-slate-200">
-                    Pre Order 3
-                </button>
-
-                <button class="bg-[#D1BEB0] font-bold rounded py-4 px-8 shadow-lg uppercase tracking-wider w-[208px] h-[200px] mx-2 my-2 md:my-0 hover:bg-slate-200">
-                    Pre Order 4
-                </button>
-
-                <button class="bg-[#D1BEB0] font-bold rounded py-4 px-8 shadow-lg uppercase tracking-wider w-[208px] h-[200px] mx-2 my-2 md:my-0 hover:bg-slate-200">
-                    Pre Order 5
-                </button> -->
             </div>
-            <!-- <div class="flex flex-col md:flex-row mt-11 justify-center">
-                <div class="max-w-sm bg-[#D1BEB0] rounded-lg border border-gray-200 shadow-md dark:bg-[#D1BEB0] hover:bg-slate-200 mx-2">
-                    <a href="#">
-                        <img class="rounded-t-lg" src="/docs/images/blog/image-1.jpg" alt="" />
-                    </a>
-                    <div class="p-5">
-                        <a href="#">
-                            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Image here</h5>
-                        </a>
-                    </div>
-                </div>
-                <div class="max-w-sm bg-[#D1BEB0] rounded-lg border border-gray-200 shadow-md dark:bg-[#D1BEB0] hover:bg-slate-200 mx-2">
-                    <a href="#">
-                        <img class="rounded-t-lg" src="/docs/images/blog/image-1.jpg" alt="" />
-                    </a>
-                    <div class="p-5">
-                        <a href="#">
-                            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Image here</h5>
-                        </a>
-                    </div>
-                </div>
-                <div class="max-w-sm bg-[#D1BEB0] rounded-lg border border-gray-200 shadow-md dark:bg-[#D1BEB0] hover:bg-slate-200 mx-2">
-                    <a href="#">
-                        <img class="rounded-t-lg" src="/docs/images/blog/image-1.jpg" alt="" />
-                    </a>
-                    <div class="p-5">
-                        <a href="#">
-                            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Image here</h5>
-                        </a>
-                    </div>
-                </div>
-                <div class="max-w-sm bg-[#D1BEB0] rounded-lg border border-gray-200 shadow-md dark:bg-[#D1BEB0] hover:bg-slate-200 mx-2">
-                    <a href="#">
-                        <img class="rounded-t-lg" src="/docs/images/blog/image-1.jpg" alt="" />
-                    </a>
-                    <div class="p-5">
-                        <a href="#">
-                            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Image here</h5>
-                        </a>
-                    </div>
-                </div>
-                <div class="max-w-sm bg-[#D1BEB0] rounded-lg border border-gray-200 shadow-md dark:bg-[#D1BEB0] hover:bg-slate-200 mx-2">
-                    <a href="#">
-                        <img class="rounded-t-lg" src="/docs/images/blog/image-1.jpg" alt="" />
-                    </a>
-                    <div class="p-5">
-                        <a href="#">
-                            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Image here</h5>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
 
 </section>
 

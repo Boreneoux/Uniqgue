@@ -10,7 +10,7 @@
         <img class="bg-[#D1BEB0] rounded mx-auto md:mx-0 md:w-[500px] md:h-[500px]" src="/img/Product/<?= $product[0]['product_img']; ?>" alt="<?= $product[0]['product_name'] ?>">
         <div class="mx-auto mt-5 md:mx-5">
             <h1 class="text-2xl mb-2"><?= $product[0]['product_name']; ?></h1>
-            <h2 class="text-xl font-bold mb-4">IDR <?=number_format($product[0]['product_price'],0,',','.') ; ?></h2>
+            <h2 class="text-xl font-bold mb-4">IDR <?= number_format($product[0]['product_price'], 0, ',', '.'); ?></h2>
             <h2 class="text-lg font-thin">Details: <br> <?= $product[0]['product_desc']; ?></h2>
 
 
@@ -18,9 +18,9 @@
                 <form action="/cart/add/<?= $product[0]['product_slug']; ?>" method="post">
                     <?php if ($product[0]['product_size'][0] != 'general') : ?>
                         <?php foreach ($product[0]['product_size'] as $size) : ?>
-                            <div class=" border active:border-black hover:border-black focus:outline-none focus:ring-black focus:border-black text-center">
-                                <input type="radio" name="size" id="size" value="<?= $size; ?>" class="form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 my-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer">
-                                <label for="size"><?= $size; ?></label>
+                            <div class="border active:border-black hover:border-black focus:outline-none focus:ring-black focus:border-black text-center">
+                                <label for="<?= $size; ?>" class="cursor-pointer"><?= $size; ?></label>
+                                <input type="radio" name="size" id="<?= $size; ?>" value="<?= $size; ?>" class="form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 my-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer">
                             </div>
                         <?php endforeach; ?>
                     <?php else : ?>
@@ -39,12 +39,12 @@
                         <button type="submit" name="submit" id="submit"> + ADD TO CART</button>
                     </div>
                     <!-- message kalo berhasil ato gk gagal -->
-                    <?php if(session()->has('validation')) :?>
-                        <?php $validation=session()->get('validation'); ?>
+                    <?php if (session()->has('validation')) : ?>
+                        <?php $validation = session()->get('validation'); ?>
                         <ul>
                             <li><?= $validation->listErrors(); ?></li>
                         </ul>
-                        <?php elseif(session()->has('success')): ?>
+                    <?php elseif (session()->has('success')) : ?>
                         <p><?= session()->get('success'); ?></p>
                     <?php endif; ?>
                 </form>

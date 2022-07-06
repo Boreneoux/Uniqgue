@@ -30,7 +30,7 @@
             <div id="profile" class="md:px-2"><a href="javascript:void(0);"><svg width="30px" height="30px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" d="M12 2.5a5.5 5.5 0 00-3.096 10.047 9.005 9.005 0 00-5.9 8.18.75.75 0 001.5.045 7.5 7.5 0 0114.993 0 .75.75 0 101.499-.044 9.005 9.005 0 00-5.9-8.181A5.5 5.5 0 0012 2.5zM8 8a4 4 0 118 0 4 4 0 01-8 0z" />
                     </svg></a></div>
-            <nav id="nav-profile" class="absolute hidden py-5 bg-gray-300 shadow-lg rounded-lg max-w-[250px] w-full right-4 top-24">
+            <nav id="nav-profile" class="absolute hidden py-5 bg-gray-300 shadow-lg rounded-lg max-w-[250px] w-full right-4 top-24 z-50">
                 <ul class="block">
                     <li class="group flex text-dark text-lg mx-8 font-bold py-4">Hello, <?= $firstWord[0]; ?> !</li>
                     <li class="group mx-8 flex py-2 text-base text-dark hover:text-white"><a href="<?= base_url('/user/profile'); ?>">My Profile</a></li>
