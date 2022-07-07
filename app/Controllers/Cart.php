@@ -27,7 +27,18 @@ class Cart extends BaseController
             session()->remove('purchased');
             session()->remove('total');
         }
+        // $cart=$this->cartModel->findCartDecoded((int)session()->get('user_id'));
+        // $productImg=$this->productModel->findAll();
+        // foreach($cart as $index=>$item){
+        //     foreach($item as $itm){
+        //         if ($itm['product_slug']==$productImg[$index]['product_slug']||
+        //             $itm['product_id']==$productImg[$index]['product_id']) {
+                    
+        //         }
+        //     }
+        // }
         // dd(session()->get('purchased'));
+        // dd($this->cartModel->findCartDecoded((int)session()->get('user_id')));
         $data = [
             "tittle" => "Cart",
             'cart' => $this->cartModel->findCartDecoded((int)session()->get('user_id'))
@@ -74,8 +85,10 @@ class Cart extends BaseController
                             // 'email'=> session()->get('email'),
                             // 'fullname'=> session()->get('fullname'),
                             // 'cart_id'=> session()->get('fullname'),
+                            'product_id' => $this->request->getVar('product_id'),
                             'product_slug' => $this->request->getVar('slug'),
                             'product_name' => $this->request->getVar('product_name'),
+                            'product_img' => $this->request->getVar('product_img'),
                             'qty' => (int)$this->request->getVar('qty'),
                             'size' => $this->request->getVar('size'),
                             'price' => (int)$this->request->getVar('price'),

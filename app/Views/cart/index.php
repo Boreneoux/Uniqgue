@@ -53,7 +53,7 @@
                                 <input type="hidden" name="qtyold_<?= $key; ?>" value="<?= (int)$item['qty']; ?>">
                             <?php endif; ?>
                             <input type="checkbox" name="key_<?= $key; ?>" id="key" <?= $edit; ?> value="<?= (int)$item['qty']; ?>">
-                            <img src="/img/Product/" alt="<?= $item['product_name']; ?>" class="bg-[#D1BEB0] group group-hover:bg-black transition-all ease-in-out w-[208px] h-[220px] mx-2 block mb-4 rounded-xl">
+                            <img src="/img/Product/<?= $item['product_img']; ?>" alt="<?= $item['product_name']; ?>" class="bg-[#D1BEB0] group group-hover:bg-black transition-all ease-in-out w-[208px] h-[220px] mx-2 block mb-4 rounded-xl">
                             <div>
                                 <label for="key"><?= $item['product_name']; ?></label>
                                 <input type="number" name="qty_<?= $key; ?>" id="qty_<?= $key; ?>" value="<?= (int)$item['qty']; ?>" <?= $editTxtNum; ?>>

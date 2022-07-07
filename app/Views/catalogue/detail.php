@@ -34,6 +34,8 @@
                     <input type="hidden" name="price" id="price" value="<?= $product[0]['product_price']; ?>">
                     <input type="hidden" name="slug" id="slug" value="<?= $product[0]['product_slug']; ?>">
                     <input type="hidden" name="product_name" id="product_name" value="<?= $product[0]['product_name']; ?>">
+                    <input type="hidden" name="product_id" id="product_id" value="<?= $product[0]['product_id']; ?>">
+                    <input type="hidden" name="product_img" id="product_img" value="<?= $product[0]['product_img']; ?>">
                     <br>
                     <div class="border bg-[#D1BEB0] text-center rounded hover:border-black focus:outline-none focus:ring-black active:border-black hover:bg-slate-300 text-xl">
                         <button type="submit" name="submit" id="submit"> + ADD TO CART</button>
