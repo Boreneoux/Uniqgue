@@ -50,11 +50,12 @@
                             </div>
                         <?php endforeach ?>
                     </div>
-                    <div class="border bg-[#D1BEB0] text-center rounded hover:border-black focus:outline-none focus:ring-black active:border-black hover:bg-slate-300 text-xl">
-                        <button type="submit" name="submit" class="uppercase">Buy</button>
+                    <div>
+                        <button type="submit" name="submit" class="uppercase border bg-[#D1BEB0] text-center rounded hover:border-black focus:outline-none focus:ring-black active:border-black hover:bg-slate-300 text-xl w-full">Buy</button>
                     </div>
                 </div>
             </div>
+        </div>
     </form>
 </div>
 </div>
